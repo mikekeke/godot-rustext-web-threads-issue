@@ -1,5 +1,4 @@
-mod fib;
-pub mod fib_godot;
+pub mod gdext_test;
 
 use godot::prelude::*;
 
