@@ -1,7 +1,7 @@
 use godot::prelude::*;
 
 #[derive(GodotClass)]
-#[class(base=RefCounted, init)]
+#[class(base=RefCounted)]
 pub struct TestClass {}
 
 #[godot_api]

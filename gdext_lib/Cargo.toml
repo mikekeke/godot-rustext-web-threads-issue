@@ -7,4 +7,4 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-godot = { git = "https://github.com/godot-rust/gdext", features = ["experimental-wasm", "lazy-function-tables"] }
+godot = { git = "https://github.com/godot-rust/gdext", rev = "4ce4714b8871bf75e95d03401e44e3f1ccbdd7df", features = ["experimental-wasm", "lazy-function-tables"] }
