@@ -1,3 +1,5 @@
 web-export/*
-!web-export/serve.py
+!web-export/.gitkeep
+canary-web-export/*
+!canary-web-export/.gitkeep
 
