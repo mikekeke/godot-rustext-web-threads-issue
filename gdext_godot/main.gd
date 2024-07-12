@@ -32,7 +32,7 @@ func _process(delta):
 func _add_sync_ui(parent):
 	var container = HBoxContainer.new()
 	var input = LineEdit.new()
-	input.text = "43"
+	input.text = "16"
 	var out = Label.new()
 	out.text = "(usually 42-45 is big enough to freeze UI)"
 	var go_fib_btn = Button.new()
@@ -47,7 +47,7 @@ func _add_sync_ui(parent):
 func _add_threaded_ui(parent):
 	var container = HBoxContainer.new()
 	var input = LineEdit.new()
-	input.text = "43"
+	input.text = "16"
 	var out = Label.new()
 	out.text = "(usually 42-45 is big enough to freeze UI)"
 	var go_fib_btn = Button.new()
