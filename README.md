@@ -10,8 +10,16 @@ Workdir: `gdext_lib`
 
 Workdir: `gdext_lib`
 
+My Debian
+
 ```bash
 source /home/mike/dev/mlabs/godot-wallet-project/emsdk/emsdk_env.sh
+```
+
+My Ubuntu
+
+```bash
+source /home/mike/emsdk/emsdk_env.sh
 ```
 
 ```bash
