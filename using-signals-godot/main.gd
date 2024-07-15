@@ -14,7 +14,7 @@ const default_fib_arg = 40
 func _ready():
 	print("Test")
 	add_child(test_node) # seems like w/o it version with signal and Rust thread won't work!
-	# This signal callback also works as expected if enabled
+	# ! This signal callback also works as expected if enabled
 	var test_enabled = false
 	if test_enabled:
 		test_node.computation_done.connect(func (res): prints("Godot: Signal received: ", res))
