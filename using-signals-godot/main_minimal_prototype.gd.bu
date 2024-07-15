@@ -24,7 +24,7 @@ func _ready() -> void:
 	vbox.add_child(test_node)
 	var res = test_node._get_test_str()
 	prints("Godot: _get_test_int res: ", res)
-	test_node.computation_done.connect(func (res): prints("Godot: Signal recevied: ", res))
+	test_node.computation_done.connect(func (res): prints("Godot: Signal received: ", res))
 	var n = 42
 	prints("Trying fib for: ", n)
 	test_node._async_fib(n)

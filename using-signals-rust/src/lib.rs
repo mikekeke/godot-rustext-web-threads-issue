@@ -1,7 +1,11 @@
+// ! Made by following the example form here:
+// ! https://discord.com/channels/723850269347283004/1258400984946708571/1258444756313313300
+// ! https://github.com/StatisMike/grid-forge/blob/381aac8547d49a8d57b603e0d217cdc134ad923d/example_godot/gf-rust/src/tile_gen.rs#L73
+
 use godot::prelude::*;
 use std::sync::mpsc::{self, Receiver, Sender};
 
-use std::thread; // TODO: ? is it correct way
+use std::thread;
 
 struct MyExtension;
 
@@ -11,6 +15,7 @@ unsafe impl ExtensionLibrary for MyExtension {}
 #[derive(GodotClass)]
 #[class(base=Node, rename=_RustTestNode, init)]
 pub struct RustTestNode {
+    // ! Do not forget this, or there will be no `self.base` to emit signals
     #[base]
     base: Base<Node>,
 

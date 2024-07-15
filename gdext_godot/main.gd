@@ -36,7 +36,7 @@ func _add_sync_ui(parent):
 	var out = Label.new()
 	out.text = "(usually 42-45 is big enough to freeze UI)"
 	var go_fib_btn = Button.new()
-	go_fib_btn.text = "Slow syncronous fib"
+	go_fib_btn.text = "Slow synchronous fib"
 	go_fib_btn.pressed.connect(_calc_fib.bind([input, out]))
 	
 	container.add_child(input)

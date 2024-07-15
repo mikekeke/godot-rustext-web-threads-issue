@@ -7,14 +7,17 @@ var main_box = VBoxContainer.new()
 
 var test_node = _RustTestNode.new()
 
+const timing_hint = "(usually 40-45 is big enough to noticeably freeze UI)"
+const default_fib_arg = 40
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Test")
 	add_child(test_node) # seems like w/o it version with signal and Rust thread won't work!
-	# This signal collback also works as expected if enabled
+	# This signal callback also works as expected if enabled
 	var test_enabled = false
 	if test_enabled:
-		test_node.computation_done.connect(func (res): prints("Godot: Signal recevied: ", res))
+		test_node.computation_done.connect(func (res): prints("Godot: Signal received: ", res))
 	
 	var check_res = test_node._get_test_str()
 	prints("Rust check: ", check_res)
@@ -39,11 +42,11 @@ func _set_frames_counter_ui(main_box):
 func _add_sync_ui(parent):
 	var container = HBoxContainer.new()
 	var input = LineEdit.new()
-	input.text = "42"
+	input.text = str(default_fib_arg)
 	var out = Label.new()
-	out.text = "(usually 42-45 is big enough to freeze UI)"
+	out.text = timing_hint
 	var go_fib_btn = Button.new()
-	go_fib_btn.text = "Slow syncronous fib"
+	go_fib_btn.text = "Slow synchronous fib"
 	go_fib_btn.pressed.connect(_calc_fib.bind([input, out]))
 	
 	container.add_child(input)
@@ -54,9 +57,9 @@ func _add_sync_ui(parent):
 func _add_threaded_ui(parent):
 	var container = HBoxContainer.new()
 	var input = LineEdit.new()
-	input.text = "42"
+	input.text = str(default_fib_arg)
 	var out = Label.new()
-	out.text = "(usually 42-45 is big enough to freeze UI)"
+	out.text = timing_hint
 	var go_fib_btn = Button.new()
 	go_fib_btn.text = "Slow in-thread fib"
 	go_fib_btn.pressed.connect(_calc_fib_in_rust_thread.bind([input, out]))
