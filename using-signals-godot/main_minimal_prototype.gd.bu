@@ -1,0 +1,47 @@
+extends Node2D
+
+var box = GridContainer.new()
+var thread = Thread.new()
+var frames = Label.new()
+
+signal result_received(x:int)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	
+	var btn = Button.new()
+	btn.text = "Emit signal"
+	add_child(box)
+	box.add_child(btn)
+	box.add_child(frames)
+	
+	var vbox = VBoxContainer.new()
+	box.add_child(vbox)
+	
+	#var test_node = TestNode.new()
+	var test_node = _RustTestNode.new()
+	
+	vbox.add_child(test_node)
+	var res = test_node._get_test_str()
+	prints("Godot: _get_test_int res: ", res)
+	test_node.computation_done.connect(func (res): prints("Godot: Signal recevied: ", res))
+	var n = 42
+	prints("Trying fib for: ", n)
+	test_node._async_fib(n)
+	var signal_result = await test_node.computation_done
+	prints("Awaited result: ", signal_result)
+	
+	
+	#if true: # `false` does not block UI, but `_ready DONE` printed after result is awaited
+		#test_node.val_computed.connect(func (res): prints("Main node: received val_computed: ", res))
+	#else:
+		#var res = await test_node.val_computed
+		#prints("Main node: awaited result: ", res)
+	#prints("Main node: _ready DONE")
+	
+	
+var cnt = 0
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	cnt += 1
+	frames.text = str(cnt)
